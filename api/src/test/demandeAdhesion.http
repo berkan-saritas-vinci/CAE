@@ -1,0 +1,55 @@
+@baseUrl = http://localhost:8080
+
+### Créer une demande d'adhésion pour la team 1 par l'utilisateur 2
+POST {{baseUrl}}/adhesions/1?userId=2
+Content-Type: application/json
+
+### Créer une demande d'adhésion pour la team 1 par l'utilisateur 3
+POST {{baseUrl}}/adhesions/1?userId=3
+Content-Type: application/json
+
+### Voir toutes les demandes de la team 1 (pour récupérer les IDs)
+GET {{baseUrl}}/adhesions/team/1
+Content-Type: application/json
+
+### Accepter la demande avec ID 1
+PUT {{baseUrl}}/adhesions/1/accepter
+Content-Type: application/json
+
+### Refuser la demande avec ID 2
+PUT {{baseUrl}}/adhesions/2/refuser?motif=Equipe_complete
+Content-Type: application/json
+
+
+### Supprimer la demande avec ID 2
+DELETE {{baseUrl}}/adhesions/2
+Content-Type: application/json
+
+### Cas d'erreur
+
+### Créer une demande d'adhésion pour la team 1 par l'utilisateur 2 (error: 400)
+POST {{baseUrl}}/adhesions/1?userId=r
+Content-Type: application/json
+
+### Créer une demande d'adhésion pour la team 1 par l'utilisateur 2
+#(error: 500 ? il faut pas un 404 ?)
+
+POST {{baseUrl}}/adhesions/1?userId=50
+Content-Type: application/json
+
+### Accepter la demande avec ID 50 (error: 403)
+PUT {{baseUrl}}/adhesions/50/accepter
+Content-Type: application/json
+
+### Accepter la demande avec une lettre au lieu d'un ID (error: 400)
+PUT {{baseUrl}}/adhesions/zz/accepter
+Content-Type: application/json
+
+
+### Refuser la demande avec ID 50 (error 403)
+PUT {{baseUrl}}/adhesions/50/refuser?motif=Equipe_complete
+Content-Type: application/json
+
+### Refuser la demande avec une lettre au lieu d'un ID (error 400)
+PUT {{baseUrl}}/adhesions/az/refuser?motif=Equipe_complete
+Content-Type: application/json

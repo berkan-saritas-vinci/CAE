@@ -1,0 +1,90 @@
+@baseUrl=http://localhost:8080
+
+### Try to login an unknow
+POST {{baseUrl}}/notificationsusers
+Content-Type: application/json
+
+{
+  "user": {
+    "id": 1
+  },
+  "notification": {
+    "id": 1
+  }
+}
+
+### Try to login an unknow
+POST {{baseUrl}}/notificationsusers
+Content-Type: application/json
+
+{
+  "user": {
+    "id": 1
+  },
+  "notification": {
+    "id": 2
+  }
+}
+
+### Try to login an unknow
+POST {{baseUrl}}/notificationsusers
+Content-Type: application/json
+
+{
+  "user": {
+    "id": 1
+  },
+  "notification": {
+    "id": 3
+  }
+}
+
+### Try to login an unknow
+POST {{baseUrl}}/notificationsusers
+Content-Type: application/json
+
+{
+  "user": {
+    "id": 1
+  },
+  "notification": {
+    "id": 4
+  }
+}
+
+### Try to login an unknow
+POST {{baseUrl}}/notificationsusers
+Content-Type: application/json
+
+{
+  "user": {
+    "id": 1
+  },
+  "notification": {
+    "id": 5
+  }
+}
+
+### cases of errors
+
+### Try to login an unknow with empty field
+POST {{baseUrl}}/notificationsusers
+Content-Type: application/json
+
+{
+  "user": {
+  },
+  "notification": {
+    "id": 5
+  }
+}
+
+### Try to login an unknow with missing field
+POST {{baseUrl}}/notificationsusers
+Content-Type: application/json
+
+{
+  "notification": {
+    "id": 5
+  }
+}

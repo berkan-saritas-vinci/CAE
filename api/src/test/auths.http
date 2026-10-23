@@ -1,0 +1,77 @@
+@baseUrl = http://localhost:8080
+
+### Try to register an User
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+  "mail": "luisEnrique@mail.com",
+  "password": "Password123!",
+  "picture": "/src/assets/avatars/avatar9.jpg",
+  "role": "USER",
+  "speciality": "Exécuteur",
+  "tag": "luis"
+}
+
+### Try to register and get an User
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+  "mail": "fatihTerim@mail.com",
+  "password": "Password123!",
+  "picture": "/src/assets/avatars/avatar9.jpg",
+  "role": "USER",
+  "speciality": "Exécuteur",
+  "tag": "Avrupa Fatihi"
+}
+
+### Try to login with an User
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+  "mail": "luisEnrique@mail.com",
+  "password": "Password123!"
+}
+
+### Try to login with an Admin
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+  "mail": "tibo@mail.com",
+  "password": "Password123!"
+}
+
+### Cases of errors
+
+### Try to create an User with missing field (error 400: Bad request)
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+  "mail": "test@mail.com",
+  "password": "Passsword123!",
+  "role": "USER",
+  "speciality": "Exécuteur",
+  "tag": "tag"
+}
+
+### Try to login an unkown User (error 401)
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+  "mail": "unknown@mail.com",
+  "password": "admin"
+}
+
+### Try to login an User with the bad password (error 401)
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+  "mail": "fatihTerim@mail.com",
+  "password": "Password123456!"
+}

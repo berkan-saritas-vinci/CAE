@@ -1,0 +1,62 @@
+@baseUrl = http://localhost:8080
+
+### GET all the teams
+GET {{baseUrl}}/team
+Accept: application/json
+
+### Créer une nouvelle team
+POST {{baseUrl}}/team
+Content-Type: application/json
+
+{
+  "name": "Team Rocket",
+  "description": "Equipe de test"
+}
+
+### Créer une deuxième team
+POST {{baseUrl}}/team
+Content-Type: application/json
+
+{
+  "name": "Team Avengers",
+  "description": "Super equipe"
+}
+
+### Créer une troisieme team
+POST {{baseUrl}}/team
+Content-Type: application/json
+
+{
+  "name": "Team Twice",
+  "description": "Chaleureuse",
+  "responsable": "sheesh"
+}
+
+### Vérifier les utilisateurs de la team 1
+GET {{baseUrl}}/users/team/1
+Accept: application/json
+
+### cases of errors
+
+### Créer une nouvelle team avec un champ vide
+# ("IL FAUT UNE ERREUR")
+POST {{baseUrl}}/team
+Content-Type: application/json
+
+{
+  "name": "",
+  "description": "Equipe de test"
+}
+
+### Créer une nouvelle team avec un champs manquant
+# (IL FAUT UNE ERREUR)
+POST {{baseUrl}}/team
+Content-Type: application/json
+
+{
+  "description": "Equipe de test"
+}
+
+### Vérifier les utilisateurs de la team 1 // fonctionne pas
+GET {{baseUrl}}/users/team/1
+Accept: application/json

@@ -1,0 +1,16 @@
+@baseUrl=http://localhost:8080
+
+### 1) Get users and pick an existing id
+GET {{baseUrl}}/auths/users
+
+### 2) Get teams and pick an existing id
+GET {{baseUrl}}/team/all
+
+### 3) Get matches for tournament 1 (adjust tournament id if needed)
+GET {{baseUrl}}/matchs/1
+
+### Register team/user to a match
+### IDs are provided via query params
+POST {{baseUrl}}/inscriptionMatches?match=1&team.id=1&user.id=1
+
+

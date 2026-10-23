@@ -1,0 +1,104 @@
+@baseUrl=http://localhost:8080
+
+### Create match
+POST {{baseUrl}}/matches/
+Content-Type: application/json
+
+{
+  "tournoi": { "id": 1 },
+  "team1": { "id": 1 },
+  "team2": { "id": 2 },
+  "tour": 1,
+  "etat": "PLANIFIE",
+  "administrateur": { "id": 1 },
+  "resultTeam1": 0,
+  "resultTeam2": 0,
+  "dateEtHeure": "2026-04-20T20:00:00"
+}
+
+### get match by team
+GET {{baseUrl}}/matches/team/5
+
+
+### get match by tournament
+GET {{baseUrl}}/matchs/1
+
+### Team 1 validates the match
+PUT {{baseUrl}}/matchs/1/team-validation
+Content-Type: application/json
+
+{
+  "teamId": 1,
+  "validated": true
+}
+
+### Team 2 contests the match
+PUT {{baseUrl}}/matchs/1/team-validation
+Content-Type: application/json
+
+{
+  "teamId": 2,
+  "validated": false
+}
+
+### Admin encodes final results
+PUT {{baseUrl}}/matchs/1/results
+Content-Type: application/json
+
+{
+  "resultTeam1": 3,
+  "resultTeam2": 1,
+  "administratorId": 1
+}
+
+### Admin corrects results after contestation
+PUT {{baseUrl}}/matchs/1/admin-decision
+Content-Type: application/json
+
+{
+  "resultTeam1": 2,
+  "resultTeam2": 3,
+  "administratorId": 1
+}
+
+### Admin applies forfeit for team 1
+PUT {{baseUrl}}/matchs/1/admin-decision
+Content-Type: application/json
+
+{
+  "forfeitingTeamId": 1,
+  "administratorId": 1
+}
+
+### Admin applies forfeit for team 2
+PUT {{baseUrl}}/matchs/1/admin-decision
+Content-Type: application/json
+
+{
+  "forfeitingTeamId": 2,
+  "administratorId": 1
+}
+
+###
+GET {{baseUrl}}/matches/8
+
+### post create match for tournament 8
+POST {{baseUrl}}/matches/matchGeneration/8
+
+### init team into match
+POST {{baseUrl}}/matches/init/8
+
+### set result for first match tournament 8
+POST {{baseUrl}}/matches/setResultMatch/3/0/1
+
+### set result for first match tournament 8
+POST {{baseUrl}}/matches/setResultMatch/2/0/1
+
+### update team into match
+POST {{baseUrl}}/matches/update/8
+
+### set result for first match tournament 8
+POST {{baseUrl}}/matches/setResultMatch/4/0/1
+
+### update team into match
+POST {{baseUrl}}/matches/update/8

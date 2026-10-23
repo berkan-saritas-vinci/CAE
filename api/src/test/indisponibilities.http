@@ -1,0 +1,80 @@
+@baseUrl = http://localhost:8080
+
+### Récupérer toutes les indisponibilités pour l'utilisateur 1
+GET {{baseUrl}}/indisponibilities?userId=1
+Accept: application/json
+
+### Ajouter une première indisponibilité pour l'utilisateur 1
+POST {{baseUrl}}/indisponibilities?userId=1
+Content-Type: application/json
+
+{
+  "startDate": "2026-03-20",
+  "endDate": "2026-03-22"
+}
+
+### Ajouter une deuxième indisponibilité pour l'utilisateur 1
+POST {{baseUrl}}/indisponibilities?userId=1
+Content-Type: application/json
+
+{
+  "startDate": "2026-03-26",
+  "endDate": "2026-03-30"
+}
+
+### Supprimer l'indisponibilité avec id 1
+DELETE {{baseUrl}}/indisponibilities/1
+
+### Vérifier que l'indisponibilité a été supprimée
+GET {{baseUrl}}/indisponibilities?userId=1
+Accept: application/json
+
+### cases of errors
+
+### Récupérer toutes les indisponibilités pour l'utilisateur (error 400)
+GET {{baseUrl}}/indisponibilities?userId=z
+Accept: application/json
+
+### Récupérer toutes les indisponibilités pour l'utilisateur (error 404)
+GET {{baseUrl}}/indisponibilities?userId=50
+Accept: application/json
+
+### Ajouter une première indisponibilité pour l'utilisateur 1 avec donnée vide (error 400)
+POST {{baseUrl}}/indisponibilities?userId=1
+Content-Type: application/json
+
+{
+  "startDate": "",
+  "endDate": "2026-03-22"
+}
+
+### Ajouter une première indisponibilité pour l'utilisateur 1 avec champs manquant (error 400)
+POST {{baseUrl}}/indisponibilities?userId=1
+Content-Type: application/json
+
+{
+  "endDate": "2026-03-22"
+}
+
+### Essayer d'ajouter une indisponibilité qui chevauche (error chevauchement de dates)
+POST {{baseUrl}}/indisponibilities?userId=1
+Content-Type: application/json
+
+{
+  "startDate": "2026-03-21",
+  "endDate": "2026-03-23"
+}
+
+### Supprimer l'indisponibilité avec une lettre au lieu d'un id (error 400)
+DELETE {{baseUrl}}/indisponibilities/a
+
+### Supprimer l'indisponibilité avec un id inexistant (error 404)
+DELETE {{baseUrl}}/indisponibilities/50
+
+### Vérifier que l'indisponibilité a été supprimée avec lettre au lieu de l'id (error 400)
+GET {{baseUrl}}/indisponibilities?userId=z
+Accept: application/json
+
+### Vérifier que l'indisponibilité a été supprimée avec id inexistant (error 404)
+GET {{baseUrl}}/indisponibilities?userId=50
+Accept: application/json

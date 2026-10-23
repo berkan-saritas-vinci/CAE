@@ -1,0 +1,31 @@
+@baseUrl=http://localhost:8080
+
+### Create tournament registration (requires existing team/tournament IDs)
+POST {{baseUrl}}/inscriptiontournament/create
+Content-Type: application/json
+
+{
+  "team": {"id": 1},
+  "tournament": {"id": 1}
+}
+
+### cases of errors
+
+### Create tournament registration (requires existing team/tournament IDs)
+### with empty field
+POST {{baseUrl}}/inscriptiontournament/create
+Content-Type: application/json
+
+{
+  "team": {},
+  "tournament": {"id": 1}
+}
+
+### Create tournament registration (requires existing team/tournament IDs)
+### with missing field
+POST {{baseUrl}}/inscriptiontournament/create
+Content-Type: application/json
+
+{
+  "tournament": {"id": 1}
+}

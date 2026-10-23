@@ -1,0 +1,76 @@
+@baseUrl = http://localhost:8080
+
+
+### CREATE the architect speciality
+POST {{baseUrl}}/specialities/create
+Content-Type: application/json
+
+{
+  "speciality": "Architecte"
+}
+
+### CREATE the exécuteur speciality
+POST {{baseUrl}}/specialities/create
+Content-Type: application/json
+
+{
+  "speciality": "Exécuteur"
+}
+
+### CREATE the tacticien speciality
+POST {{baseUrl}}/specialities/create
+Content-Type: application/json
+
+{
+  "speciality": "Tacticien"
+}
+
+### CREATE the gardien speciality
+POST {{baseUrl}}/specialities/create
+Content-Type: application/json
+
+{
+  "speciality": "Gardien"
+}
+
+### CREATE the catalyseur speciality
+POST {{baseUrl}}/specialities/create
+Content-Type: application/json
+
+{
+  "speciality": "Catalyseur"
+}
+
+### CREATE the perturbateur speciality
+POST {{baseUrl}}/specialities/create
+Content-Type: application/json
+
+{
+  "speciality": "Perturbateur"
+}
+
+### CREATE the guérisseur speciality
+POST {{baseUrl}}/specialities/create
+Content-Type: application/json
+
+{
+  "speciality": "Guérisseur"
+}
+
+### cases of errors
+
+### CREATE a speciality with empty field (error 400)
+POST {{baseUrl}}/specialities/create
+Content-Type: application/json
+
+{
+  "speciality": ""
+}
+
+### CREATE a speciality with missing field (error 400)
+POST {{baseUrl}}/specialities/create
+Content-Type: application/json
+
+{
+}
+

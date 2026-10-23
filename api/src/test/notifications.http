@@ -1,0 +1,106 @@
+@baseUrl=http://localhost:8080
+
+### Create notification - case 1
+POST {{baseUrl}}/notifications/
+Content-Type: application/json
+
+{
+  "message": "unknown",
+  "date": "2026-03-09T21:15:00"
+}
+
+### Create notification - case 2
+POST {{baseUrl}}/notifications/
+Content-Type: application/json
+
+{
+  "message": "unknown1",
+  "date": "2026-03-09T21:15:00"
+}
+
+### Create notification - case 3
+POST {{baseUrl}}/notifications/
+Content-Type: application/json
+
+{
+  "message": "unknown2",
+  "date": "2026-03-09T21:15:00"
+}
+
+### Create notification - case 4
+POST {{baseUrl}}/notifications/
+Content-Type: application/json
+
+{
+  "message": "unknown3",
+  "date": "2026-03-09T21:15:00"
+}
+
+### Create notification - case 5
+POST {{baseUrl}}/notifications/
+Content-Type: application/json
+
+{
+  "message": "unknown4",
+  "date": "2026-03-09T21:15:00"
+}
+
+### Create notification - case 6
+POST {{baseUrl}}/notifications/
+Content-Type: application/json
+
+{
+  "message": "unknow5",
+  "date": "2026-03-09T21:15:00"
+}
+
+### Create notification - case 7
+POST {{baseUrl}}/notifications/
+Content-Type: application/json
+
+{
+  "message": "unknow6",
+  "date": "2026-03-09T21:15:00"
+}
+
+### Create notification - case 8
+POST {{baseUrl}}/notifications/
+Content-Type: application/json
+
+{
+  "message": "unknow7",
+  "date": "2026-03-09T21:15:00"
+}
+
+### Create notification - case 9
+POST {{baseUrl}}/notifications/
+Content-Type: application/json
+
+{
+  "message": "unknow8",
+  "date": "2026-03-09T21:15:00"
+}
+
+
+### Get all notifications for user 1
+GET {{baseUrl}}/notifications/1
+
+
+### Error cases
+
+### Create notification with empty message (should fail)
+POST {{baseUrl}}/notifications/
+Content-Type: application/json
+
+{
+  "message": "",
+  "date": "2026-03-09T21:15:00"
+}
+
+### Create notification with missing message field (should fail)
+POST {{baseUrl}}/notifications/
+Content-Type: application/json
+
+{
+  "date": "2026-03-09T21:15:00"
+}

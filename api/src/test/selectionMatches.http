@@ -1,0 +1,4 @@
+@baseUrl = http://localhost:8080
+
+### get inscriptionMatches by match
+GET {{baseUrl}}/inscriptionMatches/1

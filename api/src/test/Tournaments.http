@@ -1,0 +1,59 @@
+@baseUrl=http://localhost:8080
+
+### Try to find all tournament
+GET {{baseUrl}}/tournaments/all
+
+### Try to find on tournament
+GET {{baseUrl}}/tournaments/id/1
+
+### Try to create a tournament
+POST {{baseUrl}}/tournaments
+Content-Type: application/json
+
+{
+  "nom": "super tournois",
+  "description": "c'est comme un tournois mais c'est un super tournois",
+  "date_debut": "2026-03-09",
+  "date_fin": "2026-04-09",
+  "date_fin_inscription": "2026-03-12",
+  "nbrTeam": 16,
+  "etat": "SAUVEGARDE"
+}
+
+### Try to create a tournament
+POST {{baseUrl}}/tournaments
+Content-Type: application/json
+
+{
+  "nom": "super tournois",
+  "description": "c'est comme un tournois mais c'est un super tournois",
+  "date_debut": "2026-03-09",
+  "date_fin": "2026-04-09",
+  "date_fin_inscription": "2026-03-12",
+  "nbrTeam": 16,
+  "gagnant": {
+    "id": 1
+  }
+}
+### Try to update the status of a tournament to INSCRIPTION_OUVERTE
+PATCH {{baseUrl}}/tournaments/publish/1
+
+
+### Cases of errors
+
+### Try to find on tournament with a letter instead of a number (error 400)
+GET {{baseUrl}}/tournaments/id/z
+
+### Try to find on tournament with an ID that does not exist (error 404)
+GET {{baseUrl}}/tournaments/id/50
+
+## POST avec cas d'erreur à tester (les post actuelle renvoie des 403)
+
+### Try to update the status of a tournament to INSCRIPTION_OUVERTE with a letter instead an id (error 400)
+PATCH {{baseUrl}}/tournaments/publish/e
+
+### Try to update the status of a tournament to INSCRIPTION_OUVERTE with an ID that does not exist (error 404)
+PATCH {{baseUrl}}/tournaments/publish/50
+
+### Try to update the status of a tournament to INSCRIPTION_OUVERTE with an ID that does not exist (error 404)
+GET {{baseUrl}}/tournaments/user/4
